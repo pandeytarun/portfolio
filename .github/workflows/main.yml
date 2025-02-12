@@ -19,5 +19,8 @@ jobs:
         aws-secrets-access-key: ${{ secrets.AWS_SECRETS_ACCESS_KEY }}
         aws-region: us-east-1
 
+    - name: Verify AWS credentials 
+      run: aws sts get-caller-identity
+     
     - name: Deploy static site to S3 bucket
       run: aws s3 sync . s3://portfolio-tarun --delete
